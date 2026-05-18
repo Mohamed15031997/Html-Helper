@@ -374,7 +374,17 @@ section{padding:4.5rem 0;position:relative;}
   .scroll-cue{animation:none;}
   .marker::before{animation:none;}
 }
+/* New world map (d3-rendered) */
+.wm2-wrap{width:100%;}
+.wm2-svg{width:100%;height:auto;display:block;}
+.wm2-loading{padding:3rem 1rem;text-align:center;color:var(--grey-700);font-size:.9rem;}
+.wm2-country{fill:#dde4ea;stroke:#bcc5cc;stroke-width:.4;transition:fill .2s;}
+.wm2-sphere{fill:#f5f7f9;}
+.wm2-graticule{fill:none;stroke:#e8ecef;stroke-width:.4;}
+.wm2-note{margin-top:.5rem;text-align:center;font-family:var(--font-body);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:#9aa3aa;}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
 </head>
 <body>
 
@@ -962,308 +972,10 @@ section{padding:4.5rem 0;position:relative;}
 
     <!-- World map (hidden, shown in modal) -->
     <div class="wm-stage" hidden>
-      <svg class="world-map" viewBox="0 0 1300 605" xmlns="http://www.w3.org/2000/svg" aria-label="World map showing BCG's global urban-development project footprint with selected examples">
-
-        <!-- Continents -->
-        <g class="continents">
-          <polygon class="wm-cont" points="258.3,137.8 263.1,135.5 270.1,134.3 277.2,127.2 286.7,124.9 293.8,124.9 300.8,126.0 312.6,127.2 322.1,128.4 336.2,129.6 352.8,127.2 362.2,126.0 371.7,122.5 383.5,120.1 407.1,120.1 418.9,121.3 430.7,122.5 442.5,120.1 454.3,120.1 461.4,122.5 466.1,124.9 477.9,134.3 485.0,141.4 489.7,146.1 485.0,150.8 494.4,155.6 501.5,157.9 513.3,162.6 520.4,167.4 527.5,174.4 532.2,181.5 525.1,183.9 513.3,183.9 503.9,188.6 496.8,188.6 492.1,193.3 489.7,195.7 485.0,198.1 480.3,200.4 477.9,205.1 475.6,209.9 470.8,212.2 466.1,216.9 463.8,221.7 466.1,226.4 466.1,231.1 466.1,233.5 461.4,233.5 459.0,226.4 454.3,221.7 449.6,221.7 444.9,224.0 440.1,224.0 433.1,224.0 430.7,226.4 426.0,231.1 426.0,240.6 430.7,247.6 433.1,250.0 437.8,254.7 447.2,254.7 449.6,252.4 451.9,254.7 456.7,257.1 459.0,261.8 459.0,271.2 468.5,273.6 470.8,273.6 468.5,268.9 459.0,266.5 451.9,266.5 444.9,261.8 440.1,259.4 437.8,257.1 430.7,254.7 418.9,250.0 411.8,247.6 404.7,242.9 395.3,238.2 390.6,231.1 385.8,226.4 383.5,221.7 378.8,216.9 376.4,214.6 371.7,212.2 366.9,205.1 364.6,202.8 362.2,198.1 362.2,191.0 362.2,183.9 364.6,179.2 359.9,176.8 355.1,172.1 348.1,165.0 343.3,162.6 336.2,157.9 329.2,155.6 322.1,153.2 312.6,150.8 300.8,150.8 293.8,153.2 281.9,157.9 272.5,162.6 265.4,162.6 258.3,150.8 258.3,137.8"/>
-          <polygon class="wm-cont" points="477.9,264.2 485.0,264.2 494.4,266.5 508.6,268.9 518.1,273.6 532.2,280.7 536.9,283.1 541.7,292.5 548.8,297.2 555.8,299.6 565.3,304.3 572.4,306.7 572.4,311.4 567.6,318.5 565.3,323.2 562.9,330.3 558.2,337.4 555.8,344.4 553.5,346.8 546.4,349.2 541.7,353.9 536.9,361.0 532.2,365.7 525.1,372.8 520.4,375.1 518.1,382.2 511.0,386.9 506.2,391.7 501.5,398.8 496.8,408.2 494.4,415.3 489.7,422.4 482.6,420.0 480.3,415.3 482.6,405.8 485.0,398.8 487.4,391.7 485.0,382.2 485.0,370.4 487.4,361.0 489.7,351.5 489.7,339.7 487.4,327.9 480.3,320.8 473.2,316.1 468.5,309.0 466.1,301.9 466.1,297.2 468.5,290.1 470.8,283.1 473.2,278.3 473.2,273.6 475.6,268.9 477.9,264.2"/>
-          <polygon class="wm-cont" points="536.9,96.5 548.8,94.2 584.2,96.5 603.1,101.2 612.5,108.3 607.8,117.8 603.1,127.2 593.6,134.3 579.4,146.1 560.6,150.8 548.8,150.8 536.9,143.8 532.2,134.3 525.1,124.9 522.8,113.1 525.1,103.6 536.9,96.5"/>
-          <polygon class="wm-cont" points="633.8,202.8 633.8,195.7 636.1,191.0 647.9,189.8 652.6,188.6 650.3,181.5 645.6,179.2 652.6,176.8 659.7,173.3 659.7,172.1 666.8,169.7 666.8,167.4 671.5,166.2 673.9,165.0 676.2,162.6 678.6,160.3 681.0,155.6 683.3,150.8 678.6,143.8 683.3,139.0 688.1,134.3 697.5,131.9 706.9,129.6 714.0,127.2 721.1,124.9 730.6,127.2 744.7,131.9 754.2,131.9 768.3,134.3 784.9,127.2 796.7,127.2 810.8,124.9 825.0,124.9 839.2,120.1 855.7,117.8 879.3,113.1 902.9,110.7 926.5,113.1 950.1,120.1 973.8,124.9 997.4,127.2 1021.0,127.2 1044.6,127.2 1056.4,131.9 1080.0,134.3 1077.6,141.4 1068.2,146.1 1056.4,150.8 1044.6,150.8 1032.8,150.8 1028.1,160.3 1021.0,162.6 1009.2,150.8 997.4,155.6 992.6,162.6 985.6,167.4 985.6,179.2 980.8,186.2 966.7,191.0 961.9,198.1 957.2,202.8 952.5,209.9 943.1,219.3 938.3,226.4 933.6,235.8 914.7,242.9 910.0,254.7 910.0,266.5 902.9,268.9 900.6,290.1 895.8,294.9 891.1,287.8 884.0,280.7 881.7,271.2 886.4,259.4 886.4,252.4 879.3,254.7 872.2,242.9 865.1,240.6 858.1,240.6 848.6,252.4 843.9,261.8 839.2,271.2 836.8,273.6 832.1,264.2 827.4,250.0 825.0,242.9 820.3,240.6 810.8,233.5 796.7,233.5 789.6,240.6 784.9,238.2 780.1,233.5 773.1,228.8 777.8,226.4 780.1,254.7 773.1,254.7 770.7,261.8 761.2,264.2 756.5,261.8 756.5,252.4 747.1,242.9 744.7,235.8 737.6,226.4 730.6,221.7 735.3,219.3 737.6,209.9 742.4,207.5 749.4,207.5 737.6,209.9 723.5,209.9 721.1,195.7 730.6,193.3 737.6,193.3 749.4,191.0 761.2,195.7 749.4,183.9 737.6,186.2 721.1,195.7 706.9,198.1 702.2,207.5 697.5,200.4 690.4,202.8 683.3,205.1 673.9,202.8 673.9,191.0 669.2,191.0 664.4,191.0 662.1,193.3 652.6,207.5 643.2,207.5 633.8,202.8"/>
-          <polygon class="wm-cont" points="626.7,226.4 619.6,240.6 614.9,242.9 614.9,259.4 617.2,264.2 621.9,266.5 624.3,271.2 633.8,276.0 647.9,280.7 657.4,280.7 666.8,280.7 671.5,280.7 676.2,283.1 673.9,287.8 676.2,292.5 678.6,297.2 681.0,299.6 683.3,304.3 683.3,311.4 683.3,318.5 685.7,325.6 688.1,332.6 690.4,337.4 688.1,346.8 688.1,353.9 692.8,358.6 697.5,368.1 699.9,372.8 702.2,372.8 706.9,372.8 714.0,372.8 718.8,370.4 725.8,365.7 728.2,361.0 730.6,358.6 730.6,351.5 735.3,351.5 737.6,344.4 740.0,335.0 749.4,330.3 749.4,320.8 749.4,311.4 754.2,299.6 758.9,294.9 763.6,287.8 768.3,283.1 775.4,273.6 775.4,266.5 773.1,264.2 756.5,264.2 754.2,257.1 747.1,252.4 744.7,245.3 742.4,240.6 737.6,235.8 735.3,228.8 732.9,224.0 730.6,219.3 721.1,219.3 716.4,216.9 706.9,214.6 697.5,214.6 690.4,216.9 683.3,214.6 681.0,212.2 676.2,207.5 671.5,205.1 666.8,207.5 659.7,207.5 652.6,209.9 640.8,209.9 633.8,216.9 631.4,221.7 626.7,226.4"/>
-          <polygon class="wm-cont" points="921.8,344.4 921.8,353.9 924.2,358.6 926.5,368.1 933.6,372.8 943.1,372.8 952.5,370.4 961.9,368.1 971.4,370.4 978.5,375.1 985.6,379.9 992.6,382.2 999.7,382.2 1004.4,379.9 1009.2,379.9 1009.2,372.8 1011.5,368.1 1016.2,356.2 1013.9,349.2 1006.8,344.4 999.7,337.4 992.6,332.6 987.9,325.6 985.6,332.6 983.2,330.3 978.5,323.2 973.8,320.8 966.7,318.5 961.9,320.8 959.6,325.6 954.9,325.6 950.1,325.6 945.4,327.9 940.7,332.6 936.0,337.4 926.5,342.1 921.8,344.4"/>
-          <polygon class="wm-cont wm-island" points="647.9,174.4 652.6,174.4 657.4,172.1 659.7,167.4 657.4,165.0 652.6,160.3 647.9,154.4 643.2,154.4 638.5,157.9 636.1,162.6 640.8,167.4 643.2,172.1 647.9,174.4"/>
-          <polygon class="wm-cont wm-island" points="631.4,169.7 638.5,169.7 640.8,167.4 640.8,162.6 636.1,162.6 631.4,165.0 631.4,169.7"/>
-          <polygon class="wm-cont wm-island" points="600.7,141.4 619.6,142.6 624.3,139.0 619.6,135.5 603.1,135.5 598.3,139.0 600.7,141.4"/>
-          <polygon class="wm-cont wm-island" points="966.7,214.6 973.8,212.2 980.8,209.9 985.6,209.9 990.3,200.4 987.9,195.7 980.8,198.1 973.8,207.5 966.7,212.2 966.7,214.6"/>
-          <polygon class="wm-cont wm-island" points="985.6,194.5 992.6,193.3 999.7,191.0 999.7,186.2 992.6,185.1 985.6,186.2 985.6,194.5"/>
-          <polygon class="wm-cont wm-island" points="961.9,219.3 966.7,219.3 966.7,214.6 961.9,214.6 959.6,216.9 961.9,219.3"/>
-          <polygon class="wm-cont wm-island" points="758.9,320.8 766.0,323.2 773.1,330.3 773.1,344.4 766.0,351.5 758.9,351.5 756.5,344.4 756.5,330.3 758.9,320.8"/>
-          <polygon class="wm-cont wm-island" points="879.3,278.3 886.4,283.1 895.8,292.5 902.9,299.6 902.9,306.7 895.8,306.7 886.4,297.2 881.7,290.1 879.3,278.3"/>
-          <polygon class="wm-cont wm-island" points="902.9,309.0 910.0,311.4 921.8,311.4 926.5,311.4 924.2,313.8 910.0,313.8 902.9,309.0"/>
-          <polygon class="wm-cont wm-island" points="912.4,283.1 919.4,283.1 926.5,283.1 933.6,280.7 936.0,287.8 933.6,294.9 931.2,299.6 926.5,301.9 919.4,299.6 914.7,294.9 912.4,290.1 912.4,283.1"/>
-          <polygon class="wm-cont wm-island" points="938.3,290.1 943.1,290.1 947.8,294.9 947.8,299.6 943.1,304.3 938.3,304.3 936.0,299.6 933.6,294.9 938.3,290.1"/>
-          <polygon class="wm-cont wm-island" points="938.3,261.8 940.7,261.8 943.1,259.4 943.1,250.0 938.3,250.0 938.3,254.7 938.3,261.8"/>
-          <polygon class="wm-cont wm-island" points="943.1,278.3 952.5,278.3 952.5,271.2 943.1,271.2 943.1,278.3"/>
-          <polygon class="wm-cont wm-island" points="966.7,294.9 973.8,297.2 985.6,299.6 999.7,301.9 1009.2,306.7 1011.5,313.8 999.7,313.8 985.6,313.8 973.8,311.4 966.7,306.7 966.7,294.9"/>
-          <polygon class="wm-cont wm-island" points="1063.5,374.0 1068.2,375.1 1075.3,379.9 1075.3,386.9 1068.2,389.3 1063.5,389.3 1061.1,384.6 1061.1,377.5 1063.5,374.0"/>
-          <polygon class="wm-cont wm-island" points="1046.9,398.8 1056.4,389.3 1065.8,391.7 1063.5,398.8 1056.4,401.1 1046.9,403.5 1046.9,398.8"/>
-          <polygon class="wm-cont wm-island" points="938.3,240.6 940.7,240.6 943.1,235.8 940.7,233.5 938.3,233.5 938.3,240.6"/>
-          <polygon class="wm-cont wm-island" points="843.9,278.3 848.6,278.3 848.6,270.1 843.9,270.1 843.9,278.3"/>
-          <polygon class="wm-cont wm-island" points="454.3,242.9 468.5,242.9 480.3,245.3 480.3,238.2 468.5,238.2 454.3,239.4 454.3,242.9"/>
-          <polygon class="wm-cont wm-island" points="480.3,250.0 494.4,250.0 494.4,245.3 485.0,245.3 480.3,247.6 480.3,250.0"/>
-          <polygon class="wm-cont wm-island" points="470.8,251.2 475.6,251.2 475.6,248.8 470.8,248.8 470.8,251.2"/>
-          <polygon class="wm-cont wm-island" points="690.4,108.3 714.0,108.3 721.1,103.6 702.2,101.2 683.3,103.6 690.4,108.3"/>
-          <polygon class="wm-cont wm-island" points="730.6,209.9 735.3,209.9 735.3,207.5 730.6,207.5 730.6,209.9"/>
-        </g>
-
-        <!-- Callout boxes (each with own dot + connector) -->
-        <g class="wm-boxes">
-        <g class="callout">
-          <line x1="220" y1="120" x2="419" y2="163" stroke="#a0a8af" stroke-width=".8" stroke-dasharray="3 3" opacity=".6"/>
-          <g transform="translate(25, 85)">
-            <rect width="195" height="70" rx="3" fill="#fff" stroke="#2d6a4f" stroke-width="1.4"/>
-            <rect width="4" height="70" fill="#2d6a4f"/>
-            <text x="15" y="25" font-family="Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="1.6" fill="#2d6a4f">CANADA</text>
-            <text x="15" y="46" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">Plan for the greenest urban</text>
-            <text x="15" y="62" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">area in North America</text>
-          </g>
-          <circle cx="419" cy="163" r="12" fill="none" stroke="#2d6a4f" stroke-width="1.3" opacity=".3"/>
-          <circle cx="419" cy="163" r="5" fill="#2d6a4f"/>
-        </g>
-        <g class="callout">
-          <line x1="220" y1="255" x2="471" y2="203" stroke="#a0a8af" stroke-width=".8" stroke-dasharray="3 3" opacity=".6"/>
-          <g transform="translate(25, 220)">
-            <rect width="195" height="70" rx="3" fill="#fff" stroke="#2d6a4f" stroke-width="1.4"/>
-            <rect width="4" height="70" fill="#2d6a4f"/>
-            <text x="15" y="25" font-family="Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="1.6" fill="#2d6a4f">UNITED STATES</text>
-            <text x="15" y="46" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">170+ revitalization initiatives</text>
-            <text x="15" y="62" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">for a major US district</text>
-          </g>
-          <circle cx="471" cy="203" r="12" fill="none" stroke="#2d6a4f" stroke-width="1.3" opacity=".3"/>
-          <circle cx="471" cy="203" r="5" fill="#2d6a4f"/>
-        </g>
-        <g class="callout">
-          <line x1="220" y1="405" x2="674" y2="269" stroke="#a0a8af" stroke-width=".8" stroke-dasharray="3 3" opacity=".6"/>
-          <g transform="translate(25, 370)">
-            <rect width="195" height="70" rx="3" fill="#fff" stroke="#2d6a4f" stroke-width="1.4"/>
-            <rect width="4" height="70" fill="#2d6a4f"/>
-            <text x="15" y="25" font-family="Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="1.6" fill="#2d6a4f">NIGERIA</text>
-            <text x="15" y="46" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">30-year development plan</text>
-            <text x="15" y="62" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">& SDG review</text>
-          </g>
-          <circle cx="674" cy="269" r="12" fill="none" stroke="#2d6a4f" stroke-width="1.3" opacity=".3"/>
-          <circle cx="674" cy="269" r="5" fill="#2d6a4f"/>
-        </g>
-        <g class="callout">
-          <line x1="332" y1="80" x2="650" y2="167" stroke="#a0a8af" stroke-width=".8" stroke-dasharray="3 3" opacity=".6"/>
-          <g transform="translate(245, 10)">
-            <rect width="175" height="70" rx="3" fill="#fff" stroke="#2d6a4f" stroke-width="1.4"/>
-            <rect width="4" height="70" fill="#2d6a4f"/>
-            <text x="15" y="25" font-family="Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="1.6" fill="#2d6a4f">UNITED KINGDOM</text>
-            <text x="15" y="46" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">Innovation vision &</text>
-            <text x="15" y="62" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">strategy for a UK hub</text>
-          </g>
-          <circle cx="650" cy="167" r="12" fill="none" stroke="#2d6a4f" stroke-width="1.3" opacity=".3"/>
-          <circle cx="650" cy="167" r="5" fill="#2d6a4f"/>
-        </g>
-        <g class="callout">
-          <line x1="552" y1="80" x2="667" y2="170" stroke="#a0a8af" stroke-width=".8" stroke-dasharray="3 3" opacity=".6"/>
-          <g transform="translate(465, 10)">
-            <rect width="175" height="70" rx="3" fill="#fff" stroke="#2d6a4f" stroke-width="1.4"/>
-            <rect width="4" height="70" fill="#2d6a4f"/>
-            <text x="15" y="25" font-family="Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="1.6" fill="#2d6a4f">NETHERLANDS</text>
-            <text x="15" y="46" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">Future public transport</text>
-            <text x="15" y="62" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">network design</text>
-          </g>
-          <circle cx="667" cy="170" r="12" fill="none" stroke="#2d6a4f" stroke-width="1.3" opacity=".3"/>
-          <circle cx="667" cy="170" r="5" fill="#2d6a4f"/>
-        </g>
-        <g class="callout">
-          <line x1="772" y1="80" x2="690" y2="151" stroke="#a0a8af" stroke-width=".8" stroke-dasharray="3 3" opacity=".6"/>
-          <g transform="translate(685, 10)">
-            <rect width="175" height="70" rx="3" fill="#fff" stroke="#2d6a4f" stroke-width="1.4"/>
-            <rect width="4" height="70" fill="#2d6a4f"/>
-            <text x="15" y="25" font-family="Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="1.6" fill="#2d6a4f">SWEDEN</text>
-            <text x="15" y="46" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">2040 vision to develop</text>
-            <text x="15" y="62" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">smartest city</text>
-          </g>
-          <circle cx="690" cy="151" r="12" fill="none" stroke="#2d6a4f" stroke-width="1.3" opacity=".3"/>
-          <circle cx="690" cy="151" r="5" fill="#2d6a4f"/>
-        </g>
-        <g class="callout">
-          <line x1="992" y1="80" x2="700" y2="182" stroke="#a0a8af" stroke-width=".8" stroke-dasharray="3 3" opacity=".6"/>
-          <g transform="translate(905, 10)">
-            <rect width="175" height="70" rx="3" fill="#fff" stroke="#2d6a4f" stroke-width="1.4"/>
-            <rect width="4" height="70" fill="#2d6a4f"/>
-            <text x="15" y="25" font-family="Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="1.6" fill="#2d6a4f">HUNGARY</text>
-            <text x="15" y="46" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">Green mobility &</text>
-            <text x="15" y="62" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">hydrogen strategy</text>
-          </g>
-          <circle cx="700" cy="182" r="12" fill="none" stroke="#2d6a4f" stroke-width="1.3" opacity=".3"/>
-          <circle cx="700" cy="182" r="5" fill="#2d6a4f"/>
-        </g>
-        <g class="callout">
-          <line x1="1085" y1="105" x2="915" y2="210" stroke="#a0a8af" stroke-width=".8" stroke-dasharray="3 3" opacity=".6"/>
-          <g transform="translate(1085, 70)">
-            <rect width="195" height="70" rx="3" fill="#fff" stroke="#2d6a4f" stroke-width="1.4"/>
-            <rect width="4" height="70" fill="#2d6a4f"/>
-            <text x="15" y="25" font-family="Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="1.6" fill="#2d6a4f">CHINA</text>
-            <text x="15" y="46" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">Strategy & development of</text>
-            <text x="15" y="62" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">a net-zero airport city</text>
-          </g>
-          <circle cx="915" cy="210" r="12" fill="none" stroke="#2d6a4f" stroke-width="1.3" opacity=".3"/>
-          <circle cx="915" cy="210" r="5" fill="#2d6a4f"/>
-        </g>
-        <g class="callout">
-          <line x1="1085" y1="193" x2="957" y2="208" stroke="#a0a8af" stroke-width=".8" stroke-dasharray="3 3" opacity=".6"/>
-          <g transform="translate(1085, 158)">
-            <rect width="195" height="70" rx="3" fill="#fff" stroke="#2d6a4f" stroke-width="1.4"/>
-            <rect width="4" height="70" fill="#2d6a4f"/>
-            <text x="15" y="25" font-family="Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="1.6" fill="#2d6a4f">SOUTH KOREA</text>
-            <text x="15" y="46" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">Entertainment & media-</text>
-            <text x="15" y="62" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">anchored property dev't</text>
-          </g>
-          <circle cx="957" cy="208" r="12" fill="none" stroke="#2d6a4f" stroke-width="1.3" opacity=".3"/>
-          <circle cx="957" cy="208" r="5" fill="#2d6a4f"/>
-        </g>
-        <g class="callout">
-          <line x1="1085" y1="281" x2="981" y2="208" stroke="#a0a8af" stroke-width=".8" stroke-dasharray="3 3" opacity=".6"/>
-          <g transform="translate(1085, 246)">
-            <rect width="195" height="70" rx="3" fill="#fff" stroke="#2d6a4f" stroke-width="1.4"/>
-            <rect width="4" height="70" fill="#2d6a4f"/>
-            <text x="15" y="25" font-family="Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="1.6" fill="#2d6a4f">JAPAN</text>
-            <text x="15" y="46" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">Smart-city project for a</text>
-            <text x="15" y="62" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">global automotive group</text>
-          </g>
-          <circle cx="981" cy="208" r="12" fill="none" stroke="#2d6a4f" stroke-width="1.3" opacity=".3"/>
-          <circle cx="981" cy="208" r="5" fill="#2d6a4f"/>
-        </g>
-        <g class="callout">
-          <line x1="1085" y1="369" x2="839" y2="241" stroke="#a0a8af" stroke-width=".8" stroke-dasharray="3 3" opacity=".6"/>
-          <g transform="translate(1085, 334)">
-            <rect width="195" height="70" rx="3" fill="#fff" stroke="#2d6a4f" stroke-width="1.4"/>
-            <rect width="4" height="70" fill="#2d6a4f"/>
-            <text x="15" y="25" font-family="Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="1.6" fill="#2d6a4f">INDIA</text>
-            <text x="15" y="46" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">Commercial business district</text>
-            <text x="15" y="62" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">development (AeroCity)</text>
-          </g>
-          <circle cx="839" cy="241" r="12" fill="none" stroke="#2d6a4f" stroke-width="1.3" opacity=".3"/>
-          <circle cx="839" cy="241" r="5" fill="#2d6a4f"/>
-        </g>
-        <g class="callout">
-          <line x1="1085" y1="457" x2="974" y2="352" stroke="#a0a8af" stroke-width=".8" stroke-dasharray="3 3" opacity=".6"/>
-          <g transform="translate(1085, 422)">
-            <rect width="195" height="70" rx="3" fill="#fff" stroke="#2d6a4f" stroke-width="1.4"/>
-            <rect width="4" height="70" fill="#2d6a4f"/>
-            <text x="15" y="25" font-family="Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="1.6" fill="#2d6a4f">AUSTRALIA</text>
-            <text x="15" y="46" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">City strategy: housing,</text>
-            <text x="15" y="62" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">transport & governance</text>
-          </g>
-          <circle cx="974" cy="352" r="12" fill="none" stroke="#2d6a4f" stroke-width="1.3" opacity=".3"/>
-          <circle cx="974" cy="352" r="5" fill="#2d6a4f"/>
-        </g>
-        <g class="callout">
-          <line x1="332" y1="515" x2="726" y2="229" stroke="#a0a8af" stroke-width=".8" stroke-dasharray="3 3" opacity=".6"/>
-          <g transform="translate(245, 515)">
-            <rect width="175" height="70" rx="3" fill="#fff" stroke="#2d6a4f" stroke-width="1.4"/>
-            <rect width="4" height="70" fill="#2d6a4f"/>
-            <text x="15" y="25" font-family="Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="1.6" fill="#2d6a4f">EGYPT</text>
-            <text x="15" y="46" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">Definition of 2050</text>
-            <text x="15" y="62" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">strategic vision</text>
-          </g>
-          <circle cx="726" cy="229" r="12" fill="none" stroke="#2d6a4f" stroke-width="1.3" opacity=".3"/>
-          <circle cx="726" cy="229" r="5" fill="#2d6a4f"/>
-        </g>
-        <g class="callout">
-          <line x1="552" y1="515" x2="761" y2="236" stroke="#a0a8af" stroke-width=".8" stroke-dasharray="3 3" opacity=".6"/>
-          <g transform="translate(465, 515)">
-            <rect width="175" height="70" rx="3" fill="#fff" stroke="#2d6a4f" stroke-width="1.4"/>
-            <rect width="4" height="70" fill="#2d6a4f"/>
-            <text x="15" y="25" font-family="Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="1.6" fill="#2d6a4f">SAUDI ARABIA</text>
-            <text x="15" y="46" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">Strategy & feasibility for a</text>
-            <text x="15" y="62" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">~20M sqm smart-city</text>
-          </g>
-          <circle cx="761" cy="236" r="12" fill="none" stroke="#2d6a4f" stroke-width="1.3" opacity=".3"/>
-          <circle cx="761" cy="236" r="5" fill="#2d6a4f"/>
-        </g>
-        <g class="callout">
-          <line x1="772" y1="515" x2="782" y2="236" stroke="#a0a8af" stroke-width=".8" stroke-dasharray="3 3" opacity=".6"/>
-          <g transform="translate(685, 515)">
-            <rect width="175" height="70" rx="3" fill="#fff" stroke="#2d6a4f" stroke-width="1.4"/>
-            <rect width="4" height="70" fill="#2d6a4f"/>
-            <text x="15" y="25" font-family="Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="1.6" fill="#2d6a4f">UAE</text>
-            <text x="15" y="46" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">Legacy strategy for an</text>
-            <text x="15" y="62" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">Expo-hosting city</text>
-          </g>
-          <circle cx="782" cy="236" r="12" fill="none" stroke="#2d6a4f" stroke-width="1.3" opacity=".3"/>
-          <circle cx="782" cy="236" r="5" fill="#2d6a4f"/>
-        </g>
-        <g class="callout">
-          <line x1="992" y1="515" x2="901" y2="289" stroke="#a0a8af" stroke-width=".8" stroke-dasharray="3 3" opacity=".6"/>
-          <g transform="translate(905, 515)">
-            <rect width="175" height="70" rx="3" fill="#fff" stroke="#2d6a4f" stroke-width="1.4"/>
-            <rect width="4" height="70" fill="#2d6a4f"/>
-            <text x="15" y="25" font-family="Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="1.6" fill="#2d6a4f">SINGAPORE</text>
-            <text x="15" y="46" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">Low-carbon community</text>
-            <text x="15" y="62" font-family="Inter, sans-serif" font-size="12" fill="#3f464e">enablement strategy</text>
-          </g>
-          <circle cx="901" cy="289" r="12" fill="none" stroke="#2d6a4f" stroke-width="1.3" opacity=".3"/>
-          <circle cx="901" cy="289" r="5" fill="#2d6a4f"/>
-        </g>
-        </g>
-
-        <!-- Bottom note -->
-        <text x="650" y="602" text-anchor="middle" font-family="Inter, sans-serif" font-size="10.5" letter-spacing="2.5" font-weight="600" fill="#9aa3aa">SELECTED EXAMPLES · ~140 CITIES · 1,300+ PROJECTS WORLDWIDE</text>
-      </svg>
-
-      <!-- Mobile-only project cards -->
-      <div class="wm-mobile-cards">
-        <div class="wm-mcard">
-          <h5>CANADA</h5>
-          <p>Plan for the greenest urban area in North America</p>
-        </div>
-        <div class="wm-mcard">
-          <h5>UNITED STATES</h5>
-          <p>170+ revitalization initiatives for a major US district</p>
-        </div>
-        <div class="wm-mcard">
-          <h5>NIGERIA</h5>
-          <p>30-year development plan & SDG review</p>
-        </div>
-        <div class="wm-mcard">
-          <h5>UNITED KINGDOM</h5>
-          <p>Innovation vision & strategy for a UK hub</p>
-        </div>
-        <div class="wm-mcard">
-          <h5>NETHERLANDS</h5>
-          <p>Future public transport network design</p>
-        </div>
-        <div class="wm-mcard">
-          <h5>SWEDEN</h5>
-          <p>2040 vision to develop smartest city</p>
-        </div>
-        <div class="wm-mcard">
-          <h5>HUNGARY</h5>
-          <p>Green mobility & hydrogen strategy</p>
-        </div>
-        <div class="wm-mcard">
-          <h5>CHINA</h5>
-          <p>Strategy & development of a net-zero airport city</p>
-        </div>
-        <div class="wm-mcard">
-          <h5>SOUTH KOREA</h5>
-          <p>Entertainment & media- anchored property dev't</p>
-        </div>
-        <div class="wm-mcard">
-          <h5>JAPAN</h5>
-          <p>Smart-city project for a global automotive group</p>
-        </div>
-        <div class="wm-mcard">
-          <h5>INDIA</h5>
-          <p>Commercial business district development (AeroCity)</p>
-        </div>
-        <div class="wm-mcard">
-          <h5>AUSTRALIA</h5>
-          <p>City strategy: housing, transport & governance</p>
-        </div>
-        <div class="wm-mcard">
-          <h5>EGYPT</h5>
-          <p>Definition of 2050 strategic vision</p>
-        </div>
-        <div class="wm-mcard">
-          <h5>SAUDI ARABIA</h5>
-          <p>Strategy & feasibility for a ~20M sqm smart-city</p>
-        </div>
-        <div class="wm-mcard">
-          <h5>UAE</h5>
-          <p>Legacy strategy for an Expo-hosting city</p>
-        </div>
-        <div class="wm-mcard">
-          <h5>SINGAPORE</h5>
-          <p>Low-carbon community enablement strategy</p>
-        </div>
+      <div class="wm2-wrap" id="wmMap">
+        <div class="wm2-loading">Loading world map…</div>
       </div>
+      <div class="wm2-note">~140 cities · 1,300+ urban projects on five continents</div>
     </div>
 
     <!-- Closing tagline -->
@@ -1353,10 +1065,48 @@ section{padding:4.5rem 0;position:relative;}
     const stage = document.querySelector('.whybcg .wm-stage');
     const triggers = document.querySelectorAll('[data-open-map]');
     let mounted = false;
+    let mapInited = false;
+
+    // Project points — easy to edit later. lat/lon in degrees, label shows on hover.
+    const projectPoints = [];
+
+    async function initWorldMap(){
+      const container = document.getElementById('wmMap');
+      if(!container || typeof d3 === 'undefined' || typeof topojson === 'undefined') return;
+      const W = 1000, H = 500;
+      container.innerHTML = '';
+      const svg = d3.select(container).append('svg')
+        .attr('class','wm2-svg')
+        .attr('viewBox', `0 0 ${W} ${H}`)
+        .attr('preserveAspectRatio','xMidYMid meet');
+      const projection = d3.geoNaturalEarth1().fitSize([W, H], {type:'Sphere'});
+      const path = d3.geoPath(projection);
+      svg.append('path').attr('class','wm2-sphere').attr('d', path({type:'Sphere'}));
+      svg.append('path').attr('class','wm2-graticule').attr('d', path(d3.geoGraticule10()));
+      try{
+        const topo = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(r => r.json());
+        const countries = topojson.feature(topo, topo.objects.countries);
+        svg.append('g').selectAll('path').data(countries.features).join('path')
+          .attr('class','wm2-country').attr('d', path);
+        // Points layer (empty until points are added)
+        const pts = svg.append('g').attr('class','wm2-points');
+        projectPoints.forEach(p => {
+          const xy = projection([p.lon, p.lat]); if(!xy) return;
+          const g = pts.append('g').attr('transform',`translate(${xy[0]},${xy[1]})`);
+          g.append('circle').attr('r',8).attr('fill','none').attr('stroke','#2d6a4f').attr('stroke-width',1.2).attr('opacity',.35);
+          g.append('circle').attr('r',3.5).attr('fill','#2d6a4f');
+          if(p.label){ g.append('text').attr('x',8).attr('y',3).attr('font-family','Inter, sans-serif').attr('font-size',10).attr('font-weight',600).attr('fill','#0d4d3a').text(p.label); }
+        });
+      } catch(e){
+        container.innerHTML = '<div class="wm2-loading">Could not load map data.</div>';
+      }
+    }
+
     function open(){
       if(!mounted && stage){ stage.removeAttribute('hidden'); mount.appendChild(stage); mounted = true; }
       panel.classList.add('open');
       triggers.forEach(t => { t.setAttribute('aria-expanded','true'); t.textContent = 'Hide project map'; });
+      if(!mapInited){ mapInited = true; initWorldMap(); }
       setTimeout(() => panel.scrollIntoView({behavior:'smooth',block:'nearest'}), 50);
     }
     function close(){
