@@ -1,0 +1,77 @@
+Update the Selected global urban projects map section to show 10 selected projects spread across the world.
+
+For each project, display:
+
+Country flag
+City
+Country
+Short project description
+
+Remove the existing subtitle and use only this section title:
+
+Selected global urban projects
+
+Use the following 10 projects:
+
+Selected projects to show on the map
+1. Casablanca, Morocco 🇲🇦
+
+Project description:
+Supported “True Capital” of Africa initiatives and new industrial city investment strategy.
+
+2. Riyadh, Saudi Arabia 🇸🇦
+
+Project description:
+Supported strategic planning for a royal commission, sovereign wealth fund strategy, and mixed-use megaproject management.
+
+3. Kyiv, Ukraine 🇺🇦
+
+Project description:
+Supported the City of Kyiv in defining its 2025 strategy.
+
+4. Tokyo, Japan 🇯🇵
+
+Project description:
+Developed smart city strategy and corporate strategy for a major financial institution.
+
+5. New Delhi, India 🇮🇳
+
+Project description:
+Supported commercial business district development, including AeroCity.
+
+6. Jakarta, Indonesia 🇮🇩
+
+Project description:
+Developed a 15-year economic and infrastructure masterplan.
+
+7. Beijing, China 🇨🇳
+
+Project description:
+Supported land development, industrial planning, municipal business district strategy, and bio-medicine park planning.
+
+8. Detroit, United States 🇺🇸
+
+Project description:
+Delivered pilot new mobility services and business attraction / job growth strategy.
+
+9. Ras El Hekma, Egypt 🇪🇬
+
+Project description:
+Supported development and economic activation strategy for a major coastal urban destination.
+
+10. NEOM, Saudi Arabia 🇸🇦
+
+Project description:
+Designed a 100% renewable-powered new industrial city.
+
+Layout instructions
+
+Please arrange the projects so they are geographically spread across the map:
+
+North America: Detroit
+North Africa: Casablanca, Ras El Hekma
+Middle East: Riyadh, NEOM
+Europe: Kyiv
+Asia: Beijing, Tokyo, New Delhi, Jakarta
+
+Keep the map clean and readable. Use concise callout boxes with the flag, city, country, and one-line project description.
