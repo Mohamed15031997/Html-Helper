@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "ACUD Teaser Deck"
+version = "1.0.0"
+id = "artifacts/acud-teaser"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24002
+
+[services.development]
+run = "pnpm --filter @workspace/acud-teaser run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/acud-teaser", "run", "build" ]
+publicDir = "artifacts/acud-teaser/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24002"
+BASE_PATH = "/"
