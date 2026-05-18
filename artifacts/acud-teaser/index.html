@@ -389,7 +389,7 @@ section{padding:4.5rem 0;position:relative;}
 .wm2-call{position:absolute;pointer-events:auto;background:rgba(255,255,255,.96);backdrop-filter:blur(2px);border:1px solid var(--grey-200);border-left:3px solid var(--green-700);border-radius:6px;padding:.4rem .55rem;width:16%;min-height:60px;box-shadow:0 4px 12px rgba(13,77,58,.14);}
 .wm2-call.side-L{}
 .wm2-call .ttl{display:flex;align-items:center;gap:.35rem;font-family:var(--font-body);font-size:.72rem;font-weight:700;color:var(--green-900);margin-bottom:.25rem;line-height:1.15;letter-spacing:.01em;}
-.wm2-call .flag{font-size:1.1rem;line-height:1;}
+.wm2-call .flag{width:18px;height:auto;display:inline-block;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.08);object-fit:cover;}
 .wm2-call p{font-family:var(--font-body);font-size:.62rem;line-height:1.4;color:var(--grey-700);margin:0;}
 .wm2-leader{fill:none;stroke:#c9a961;stroke-width:1;stroke-dasharray:3 3;opacity:.75;}
 .wm2-anchor{fill:#c9a961;}
@@ -1085,17 +1085,17 @@ section{padding:4.5rem 0;position:relative;}
     // Slots are in viewBox coords; map renders in 0..1000 x 0..500.
     const projects = [
       // LEFT column (top → bottom)
-      { slot:'L1', flag:'🇺🇸', city:'Detroit',      country:'United States', lat:42.33, lon:-83.05, desc:'New mobility services pilot and business attraction & job-growth strategy.' },
-      { slot:'L2', flag:'🇲🇦', city:'Casablanca',   country:'Morocco',       lat:33.57, lon:-7.59,  desc:'"True Capital" of Africa initiatives and new industrial city strategy.' },
-      { slot:'L3', flag:'🇪🇬', city:'Ras El Hekma', country:'Egypt',         lat:31.05, lon:27.83,  desc:'Development & economic activation strategy for a major coastal destination.' },
-      { slot:'L4', flag:'🇸🇦', city:'NEOM',         country:'Saudi Arabia',  lat:27.97, lon:35.56,  desc:'Designed a 100% renewable-powered new industrial city.' },
-      { slot:'L5', flag:'🇸🇦', city:'Riyadh',       country:'Saudi Arabia',  lat:24.71, lon:46.67,  desc:'Royal commission planning, SWF strategy, megaproject management.' },
+      { slot:'L1', iso:'us', city:'Detroit',      country:'United States', lat:42.33, lon:-83.05, desc:'New mobility services pilot and business attraction & job-growth strategy.' },
+      { slot:'L2', iso:'ma', city:'Casablanca',   country:'Morocco',       lat:33.57, lon:-7.59,  desc:'"True Capital" of Africa initiatives and new industrial city strategy.' },
+      { slot:'L3', iso:'eg', city:'Ras El Hekma', country:'Egypt',         lat:31.05, lon:27.83,  desc:'Development & economic activation strategy for a major coastal destination.' },
+      { slot:'L4', iso:'sa', city:'NEOM',         country:'Saudi Arabia',  lat:27.97, lon:35.56,  desc:'Designed a 100% renewable-powered new industrial city.' },
+      { slot:'L5', iso:'sa', city:'Riyadh',       country:'Saudi Arabia',  lat:24.71, lon:46.67,  desc:'Royal commission planning, SWF strategy, megaproject management.' },
       // RIGHT column (top → bottom)
-      { slot:'R1', flag:'🇺🇦', city:'Kyiv',         country:'Ukraine',       lat:50.45, lon:30.52,  desc:"Defined the City of Kyiv's 2025 strategy." },
-      { slot:'R2', flag:'🇨🇳', city:'Beijing',      country:'China',         lat:39.90, lon:116.41, desc:'Land, industrial, municipal BD & bio-medicine park planning.' },
-      { slot:'R3', flag:'🇯🇵', city:'Tokyo',        country:'Japan',         lat:35.68, lon:139.69, desc:'Smart-city and corporate strategy for a major financial institution.' },
-      { slot:'R4', flag:'🇮🇳', city:'New Delhi',    country:'India',         lat:28.61, lon:77.21,  desc:'Commercial business district development, including AeroCity.' },
-      { slot:'R5', flag:'🇮🇩', city:'Jakarta',      country:'Indonesia',     lat:-6.21, lon:106.85, desc:'15-year economic and infrastructure masterplan.' },
+      { slot:'R1', iso:'ua', city:'Kyiv',         country:'Ukraine',       lat:50.45, lon:30.52,  desc:"Defined the City of Kyiv's 2025 strategy." },
+      { slot:'R2', iso:'cn', city:'Beijing',      country:'China',         lat:39.90, lon:116.41, desc:'Land, industrial, municipal BD & bio-medicine park planning.' },
+      { slot:'R3', iso:'jp', city:'Tokyo',        country:'Japan',         lat:35.68, lon:139.69, desc:'Smart-city and corporate strategy for a major financial institution.' },
+      { slot:'R4', iso:'in', city:'New Delhi',    country:'India',         lat:28.61, lon:77.21,  desc:'Commercial business district development, including AeroCity.' },
+      { slot:'R5', iso:'id', city:'Jakarta',      country:'Indonesia',     lat:-6.21, lon:106.85, desc:'15-year economic and infrastructure masterplan.' },
     ];
 
     // Slot positions in viewBox coords (box top-left). Box width ~170, height ~95.
@@ -1156,7 +1156,7 @@ section{padding:4.5rem 0;position:relative;}
           box.className = 'wm2-call side-' + slot.side;
           box.style.left = ((slot.x - VB_X) / VB_W * 100) + '%';
           box.style.top  = ((slot.y - VB_Y) / VB_H * 100) + '%';
-          box.innerHTML = `<div class="ttl"><span class="flag">${p.flag}</span>${p.city}</div><p>${p.desc}</p>`;
+          box.innerHTML = `<div class="ttl"><img class="flag" src="https://flagcdn.com/w40/${p.iso}.png" srcset="https://flagcdn.com/w80/${p.iso}.png 2x" alt="" loading="lazy" />${p.city}</div><p>${p.desc}</p>`;
           overlay.appendChild(box);
         });
         container.appendChild(overlay);
