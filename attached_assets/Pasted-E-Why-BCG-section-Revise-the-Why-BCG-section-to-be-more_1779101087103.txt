@@ -1,0 +1,72 @@
+E. Why BCG section
+
+Revise the Why BCG section to be more credentials-led and interactive.
+
+The section should communicate BCG’s strength across four areas:
+
+Real estate expertise
+Cities and regions experience
+Egypt / NAC-relevant experience
+Proprietary IP, benchmarks, and implementation experience
+Suggested Why BCG title
+
+Why BCG is uniquely positioned to support AUCD
+
+Suggested structure
+1. Deep global real estate expertise
+
+Use messages inspired by the reference slides:
+
+100+ global experts in real estate
+
+More than 1,500 real estate projects delivered globally over the past 5 years
+
+Deep expertise across real estate strategy, development planning, operating models, governance, and asset value creation
+
+2. Proven cities and regions experience
+
+Use the cities credentials from the screenshots:
+
+More than 700 cities and regions projects delivered globally over the past 5 years
+
+Experience across urban regeneration, smart cities, destination development, economic activation, municipal strategy, and city operating models
+
+Ability to connect physical development with economic, social, institutional, and private-sector activation
+
+3. Strong Middle East and Egypt footprint
+
+Include the Middle East / Egypt-specific credentials:
+
+100+ real estate projects delivered in the Middle East over the past 5 years
+
+30+ Middle East megaprojects supported across strategy, planning, governance, operating models, economic activation, and business cases
+
+Extensive experience with Egypt’s flagship real estate and smart-city initiatives
+
+Specific Egypt examples to include:
+
+Mega Greenfield Project: designed a mega-scale city in Egypt targeting 2+ million residents and 6–8 million annual tourists, including commercial strategy, investment requirements, masterplan alignment, and risk mitigation.
+
+Noor Smart City: defined the smart-city vision, strategy, value proposition, priority user personas, use cases, and implementation roadmap for one of Egypt’s largest planned smart cities.
+
+Ministry of Communications and Information Technology: supported transformation of Egypt’s national Real Estate Wealth Management System, including target architecture, priority workflows, transition model, digital capabilities, and GIS integration.
+
+4. Practical IP and implementation focus
+
+Suggested wording:
+
+BCG brings proprietary IP, benchmarks, and tested frameworks for city activation, real estate demand creation, governance, incentives, and implementation planning.
+
+Our approach combines strategic diagnosis with pragmatic activation levers, helping clients move from vision to executable priorities.
+
+F. Why BCG interaction / map behavior
+
+Please add an interaction to the Why BCG section.
+
+Interaction requirement
+
+When the user clicks on the project / credentials area — especially the cities or project count — a zoom-in overlay or modal should open.
+
+Modal content
+
+The modal should show the current map from the HTML, with cities and projects highlighted.

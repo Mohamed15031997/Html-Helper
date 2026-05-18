@@ -257,6 +257,48 @@ section{padding:4.5rem 0;position:relative;}
 .whybcg .title em{font-style:italic;color:var(--gold-700);font-weight:400;}
 .whybcg .subtitle strong{color:var(--green-800);font-weight:600;}
 
+/* Why BCG — structured credentials */
+.bcg-block{margin-top:2.75rem;}
+.bcg-block-h{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;}
+.bcg-block-h::after{content:'';flex:1;height:1px;background:var(--grey-200);}
+.bcg-block-h span{font-family:var(--font-body);font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--green-800);background:rgba(31,125,95,.08);padding:.45rem .85rem;border-radius:99px;}
+.bcg-cred-grid{display:grid;grid-template-columns:1fr;gap:1.1rem;}
+@media(min-width:760px){.bcg-cred-grid{grid-template-columns:1fr 1fr 1fr;gap:1.25rem;}}
+.bcg-cred{background:#fff;border:1px solid var(--grey-200);border-radius:14px;padding:1.5rem 1.4rem 1.55rem;display:flex;flex-direction:column;gap:.65rem;transition:transform .25s,box-shadow .25s,border-color .25s;}
+.bcg-cred:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(13,77,58,.08);border-color:var(--green-700);}
+.bcg-cred .cap{font-family:var(--font-body);font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-700);font-weight:700;}
+.bcg-cred h4{font-family:var(--font-display);font-weight:400;font-size:1.22rem;color:var(--green-900);line-height:1.25;letter-spacing:-.01em;}
+.bcg-cred .stat{font-family:var(--font-display);font-weight:400;font-size:2.2rem;color:var(--green-800);line-height:1;letter-spacing:-.02em;}
+.bcg-cred .stat em{font-style:italic;color:var(--gold-700);}
+.bcg-cred p{font-size:.92rem;line-height:1.5;color:var(--grey-700);}
+.bcg-cred .map-link{margin-top:auto;padding-top:.6rem;display:inline-flex;align-items:center;gap:.4rem;background:none;border:0;cursor:pointer;font-family:var(--font-body);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--green-800);transition:color .2s;padding-left:0;padding-right:0;}
+.bcg-cred .map-link:hover{color:var(--gold-700);}
+.bcg-cred .map-link::after{content:'↗';font-size:.95rem;letter-spacing:0;}
+
+.bcg-egypt{background:linear-gradient(180deg,#fff 0%,#fbf6ec 100%);border:1px solid var(--grey-200);border-radius:16px;padding:1.75rem 1.65rem;}
+.bcg-egypt-stats{display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:1.5rem;}
+@media(min-width:600px){.bcg-egypt-stats{grid-template-columns:1fr 1fr;}}
+.bcg-estat{padding:.85rem 1rem;border-left:2px solid var(--gold-500);background:rgba(201,169,97,.06);border-radius:0 8px 8px 0;}
+.bcg-estat .n{font-family:var(--font-display);font-weight:400;font-size:1.65rem;color:var(--green-800);line-height:1;}
+.bcg-estat .n em{font-style:italic;color:var(--gold-700);}
+.bcg-estat p{font-size:.85rem;color:var(--grey-700);line-height:1.4;margin-top:.35rem;}
+.bcg-cases{display:grid;grid-template-columns:1fr;gap:1rem;}
+@media(min-width:760px){.bcg-cases{grid-template-columns:1fr 1fr 1fr;}}
+.bcg-case{background:#fff;border:1px solid var(--grey-200);border-top:3px solid var(--green-700);border-radius:8px;padding:1.1rem 1.1rem 1.2rem;}
+.bcg-case .lbl{font-family:var(--font-body);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-700);font-weight:700;}
+.bcg-case h5{font-family:var(--font-display);font-weight:500;font-size:1.02rem;color:var(--green-900);margin:.4rem 0 .55rem;line-height:1.25;}
+.bcg-case p{font-size:.86rem;line-height:1.5;color:var(--grey-700);}
+
+/* World map modal */
+.wm-modal{position:fixed;inset:0;background:rgba(10,30,24,.78);backdrop-filter:blur(4px);z-index:1000;display:none;align-items:center;justify-content:center;padding:2.5vh 2vw;opacity:0;transition:opacity .25s;}
+.wm-modal.active{display:flex;opacity:1;}
+.wm-modal-inner{background:#fff;border-radius:14px;width:100%;max-width:1320px;max-height:95vh;overflow:auto;position:relative;padding:2.5rem 1.5rem 1.5rem;box-shadow:0 30px 80px rgba(0,0,0,.4);}
+.wm-modal-close{position:absolute;top:.85rem;right:1rem;background:#fff;border:1px solid var(--grey-200);width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--grey-700);z-index:2;}
+.wm-modal-close:hover{background:var(--green-800);color:#fff;border-color:var(--green-800);}
+.wm-modal-title{font-family:var(--font-display);font-weight:400;font-size:1.25rem;color:var(--green-900);margin:0 2.5rem .15rem 0;letter-spacing:-.01em;}
+.wm-modal-sub{font-size:.85rem;color:var(--grey-700);margin-bottom:1rem;}
+.wm-modal .wm-stage{margin-top:.5rem;box-shadow:none;border:0;padding:0;}
+
 /* World map stage — the centerpiece */
 .wm-stage{margin-top:3rem;padding:2rem 1.5rem 1.5rem;background:#fff;border:1px solid var(--grey-200);border-radius:16px;box-shadow:0 10px 28px rgba(13,77,58,.05);position:relative;}
 .world-map{width:100%;height:auto;display:block;}
@@ -848,10 +890,72 @@ section{padding:4.5rem 0;position:relative;}
 <section class="whybcg" id="why-bcg">
   <div class="container">
     <span class="eyebrow reveal">05 · Why BCG</span>
-    <h2 class="title reveal">Built From <em>Global Experience</em></h2>
-    <p class="subtitle reveal">Across <strong>~140 cities</strong> and <strong>1,300+ urban projects</strong> on five continents — BCG brings proven playbooks to the NAC's next phase.</p>
+    <h2 class="title reveal">Why BCG is uniquely positioned to support <em>ACUD</em></h2>
+    <p class="subtitle reveal">Deep real estate and cities expertise — translated into Egypt and the Middle East — backed by proprietary IP and implementation muscle.</p>
 
-    <div class="wm-stage reveal">
+    <!-- GLOBAL credentials -->
+    <div class="bcg-block reveal">
+      <div class="bcg-block-h"><span>Global</span></div>
+      <div class="bcg-cred-grid">
+        <div class="bcg-cred">
+          <span class="cap">Real Estate Expertise</span>
+          <h4>Deep global real estate practice</h4>
+          <div class="stat"><em>100+</em> experts</div>
+          <p><strong>1,500+ real estate projects</strong> delivered globally in the past 5 years — across strategy, development planning, operating models, governance, and asset value creation.</p>
+          <button type="button" class="map-link" data-open-map>See project map</button>
+        </div>
+        <div class="bcg-cred">
+          <span class="cap">Cities &amp; Regions</span>
+          <h4>Proven cities and regions experience</h4>
+          <div class="stat"><em>700+</em> projects</div>
+          <p>Across urban regeneration, smart cities, destination development, economic activation, and city operating models — connecting physical development with economic, social, and private-sector activation.</p>
+          <button type="button" class="map-link" data-open-map>See project map</button>
+        </div>
+        <div class="bcg-cred">
+          <span class="cap">Proprietary IP</span>
+          <h4>Practical IP and implementation focus</h4>
+          <div class="stat"><em>Benchmarks</em></div>
+          <p>Tested frameworks for city activation, real estate demand creation, governance, incentives, and implementation planning — combining strategic diagnosis with pragmatic activation levers to move from vision to executable priorities.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- EGYPT & MIDDLE EAST credentials -->
+    <div class="bcg-block reveal">
+      <div class="bcg-block-h"><span>Egypt &amp; Middle East</span></div>
+      <div class="bcg-egypt">
+        <div class="bcg-egypt-stats">
+          <div class="bcg-estat">
+            <div class="n"><em>100+</em> real estate projects</div>
+            <p>Delivered in the Middle East over the past 5 years.</p>
+          </div>
+          <div class="bcg-estat">
+            <div class="n"><em>30+</em> megaprojects</div>
+            <p>Supported across strategy, planning, governance, operating models, economic activation, and business cases.</p>
+          </div>
+        </div>
+        <div class="bcg-cases">
+          <div class="bcg-case">
+            <span class="lbl">Egypt · Greenfield City</span>
+            <h5>Mega Greenfield Project</h5>
+            <p>Designed a mega-scale city in Egypt targeting <strong>2M+ residents</strong> and <strong>6–8M annual tourists</strong> — including commercial strategy, investment requirements, masterplan alignment, and risk mitigation.</p>
+          </div>
+          <div class="bcg-case">
+            <span class="lbl">Egypt · Smart City</span>
+            <h5>Noor Smart City</h5>
+            <p>Defined the smart-city vision, strategy, value proposition, priority user personas, use cases, and implementation roadmap for one of Egypt's largest planned smart cities.</p>
+          </div>
+          <div class="bcg-case">
+            <span class="lbl">Egypt · Public Sector</span>
+            <h5>Ministry of Communications &amp; IT</h5>
+            <p>Supported transformation of Egypt's national Real Estate Wealth Management System — target architecture, priority workflows, transition model, digital capabilities, and GIS integration.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- World map (hidden, shown in modal) -->
+    <div class="wm-stage" hidden>
       <svg class="world-map" viewBox="0 0 1300 605" xmlns="http://www.w3.org/2000/svg" aria-label="World map showing BCG's global urban-development project footprint with selected examples">
 
         <!-- Continents -->
@@ -1161,6 +1265,16 @@ section{padding:4.5rem 0;position:relative;}
       <p>BCG brings <em>proven playbooks, executional muscle, and global pattern-recognition</em> to help ACUD turn the NAC into a vibrant, livable, and economically active capital.</p>
     </div>
   </div>
+
+  <!-- Project-map modal -->
+  <div class="wm-modal" id="wmModal" role="dialog" aria-modal="true" aria-labelledby="wmModalTitle" hidden>
+    <div class="wm-modal-inner">
+      <button type="button" class="wm-modal-close" aria-label="Close map" data-close-map>×</button>
+      <h3 class="wm-modal-title" id="wmModalTitle">Selected global urban projects</h3>
+      <p class="wm-modal-sub">~140 cities · 1,300+ urban projects on five continents</p>
+      <div class="wm-modal-mount"></div>
+    </div>
+  </div>
 </section>
 <!-- =========== PATH FORWARD (minimal closing) =========== -->
 <section class="forward" id="forward">
@@ -1234,6 +1348,30 @@ section{padding:4.5rem 0;position:relative;}
   }
 
   // ----- Bucket expand/collapse -----
+  // World-map modal: lazy-mount stage into modal, open/close handlers
+  (function(){
+    const modal = document.getElementById('wmModal');
+    if(!modal) return;
+    const mount = modal.querySelector('.wm-modal-mount');
+    const stage = document.querySelector('.whybcg .wm-stage');
+    let mounted = false;
+    function open(){
+      if(!mounted && stage){ stage.removeAttribute('hidden'); mount.appendChild(stage); mounted = true; }
+      modal.removeAttribute('hidden');
+      requestAnimationFrame(() => modal.classList.add('active'));
+      document.body.style.overflow = 'hidden';
+    }
+    function close(){
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => modal.setAttribute('hidden',''), 250);
+    }
+    document.querySelectorAll('[data-open-map]').forEach(b => b.addEventListener('click', open));
+    modal.querySelectorAll('[data-close-map]').forEach(b => b.addEventListener('click', close));
+    modal.addEventListener('click', e => { if(e.target === modal) close(); });
+    document.addEventListener('keydown', e => { if(e.key === 'Escape' && modal.classList.contains('active')) close(); });
+  })();
+
   document.querySelectorAll('[data-bucket]').forEach(b => {
     const head = b.querySelector('.bucket-head');
     head.addEventListener('click', () => {
