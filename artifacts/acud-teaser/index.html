@@ -386,7 +386,7 @@ section{padding:4.5rem 0;position:relative;}
 .wm2-note{margin-top:.5rem;text-align:center;font-family:var(--font-body);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:#9aa3aa;}
 .wm2-wrap{position:relative;}
 .wm2-callouts{position:absolute;inset:0;pointer-events:none;}
-.wm2-call{position:absolute;pointer-events:auto;background:#fff;border:1px solid var(--grey-200);border-left:3px solid var(--green-700);border-radius:6px;padding:.45rem .6rem;width:13.5%;min-height:70px;box-shadow:0 4px 12px rgba(13,77,58,.10);}
+.wm2-call{position:absolute;pointer-events:auto;background:rgba(255,255,255,.95);backdrop-filter:blur(2px);border:1px solid var(--grey-200);border-left:3px solid var(--green-700);border-radius:6px;padding:.4rem .55rem;width:15.5%;min-height:60px;box-shadow:0 4px 12px rgba(13,77,58,.12);}
 .wm2-call.side-L{}
 .wm2-call .ttl{display:flex;align-items:center;gap:.35rem;font-family:var(--font-body);font-size:.72rem;font-weight:700;color:var(--green-900);margin-bottom:.25rem;line-height:1.15;letter-spacing:.01em;}
 .wm2-call .flag{font-size:1.1rem;line-height:1;}
@@ -1098,19 +1098,20 @@ section{padding:4.5rem 0;position:relative;}
       { slot:'R5', flag:'🇮🇩', city:'Jakarta',      country:'Indonesia',     lat:-6.21, lon:106.85, desc:'15-year economic and infrastructure masterplan.' },
     ];
 
-    // Slot positions in viewBox coords (box top-left). Box width 180, height ~110.
+    // Slot positions in viewBox coords (box top-left). Box width ~170, height ~95.
+    // Boxes are allowed to overlap the map edges to keep the section compact.
     const SLOTS = {
-      L1:{x:-200, y:10,  side:'L'}, L2:{x:-200, y:140, side:'L'}, L3:{x:-200, y:270, side:'L'},
-      L4:{x:-200, y:400, side:'L'}, L5:{x:-200, y:530, side:'L'},
-      R1:{x:1020, y:10,  side:'R'}, R2:{x:1020, y:140, side:'R'}, R3:{x:1020, y:270, side:'R'},
-      R4:{x:1020, y:400, side:'R'}, R5:{x:1020, y:530, side:'R'},
+      L1:{x:-40, y:5,   side:'L'}, L2:{x:-40, y:108, side:'L'}, L3:{x:-40, y:211, side:'L'},
+      L4:{x:-40, y:314, side:'L'}, L5:{x:-40, y:417, side:'L'},
+      R1:{x:870, y:5,   side:'R'}, R2:{x:870, y:108, side:'R'}, R3:{x:870, y:211, side:'R'},
+      R4:{x:870, y:314, side:'R'}, R5:{x:870, y:417, side:'R'},
     };
 
     async function initWorldMap(){
       const container = document.getElementById('wmMap');
       if(!container || typeof d3 === 'undefined' || typeof topojson === 'undefined') return;
       const W = 1000, H = 500;
-      const VB_X = -215, VB_Y = -10, VB_W = 1430, VB_H = 670;
+      const VB_X = -50, VB_Y = -10, VB_W = 1100, VB_H = 540;
       container.innerHTML = '';
       const svg = d3.select(container).append('svg')
         .attr('class','wm2-svg')
@@ -1135,7 +1136,7 @@ section{padding:4.5rem 0;position:relative;}
         projects.forEach(p => {
           const xy = projection([p.lon, p.lat]); if(!xy) return;
           const slot = SLOTS[p.slot]; if(!slot) return;
-          const boxW = 180, boxH = 110;
+          const boxW = 170, boxH = 95;
           const anchorX = slot.side === 'L' ? slot.x + boxW : slot.x;
           const anchorY = slot.y + boxH / 2;
 
