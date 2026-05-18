@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "BpGc2tk3ZlpIjgckK_Pfb"
+uri = "file://dist/ACUD_Teaser_v1.tar.gz"
+type = "unspecified"
+title = "ACUD Teaser (updated HTML) - tar.gz archive"
