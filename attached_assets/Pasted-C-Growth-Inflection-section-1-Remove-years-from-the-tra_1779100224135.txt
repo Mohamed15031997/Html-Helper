@@ -1,0 +1,52 @@
+C. Growth Inflection section
+1. Remove years from the trajectory
+
+Remove the specific years from the growth trajectory, but keep the graph structure and visual flow as-is.
+
+The section should feel less like a fixed timeline and more like a strategic progression.
+
+2. Update the inflection point label
+
+Where the chart currently says “Inflection point,” revise it to:
+
+Inflection point: where AUCD stands today
+
+3. Refine the “before” phase
+
+The phase before the inflection point should communicate that much of the foundational work has already been completed, but can still be refined.
+
+Suggested wording:
+
+Core capital deployment, infrastructure delivery, and public-sector relocation are largely established. The opportunity now is to refine these foundations and convert them into broader market momentum.
+
+4. Refine the “future trajectory” message
+
+The future part of the graph should show what the trajectory could look like if NAC successfully activates economic demand, livability, and residential commitment.
+
+Suggested wording:
+
+The next stage is defined by the ability to translate existing footfall and infrastructure into economic activity, private-sector anchors, livability demand, and long-term residential commitment.
+
+5. Update upside milestones
+
+For the upper / upside scenario milestones, use the following logic:
+
+Milestone 1
+
+Key components of livability are activated, and an initial wave of anchor tenants begins moving into core clusters, supported by strong incentives.
+
+Milestone 2
+
+Cluster-adjacent industries develop around anchor tenants, alongside a broadening residential demographic and complementary city components such as events, sports, culture, retail, and F&B.
+
+Milestone 3
+
+NAC becomes a vibrant, livable city that attracts residents, talent, businesses, and visitors at a regional scale.
+
+6. Update downside scenario
+
+For the downside scenario, reflect the risk of failing to convert government activity into private-sector and residential demand.
+
+Suggested wording:
+
+Ineffective private-sector anchoring results in a city primarily driven by administrative and government functions. This increases the share of commuters rather than permanent tenants or residents, limits urban vibrancy, reduces market appeal, and places pressure on asset values due to weak demand. Over time, this makes repositioning NAC for private-sector growth more difficult.
