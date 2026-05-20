@@ -674,11 +674,11 @@ section{padding:4.5rem 0;position:relative;}
 
         <!-- Path of COMPOUNDING (green) -->
         <path d="M 390 400 C 570 365, 770 260, 1100 145" fill="none" stroke="#2d6a4f" stroke-width="3.2" stroke-linecap="round"/>
-        <polygon points="1100,145 1086,153 1090,135" fill="#2d6a4f"/>
+        <polygon points="0,-9 16,0 0,9" fill="#2d6a4f" transform="translate(1100,145) rotate(-19)"/>
 
         <!-- Path of STAGNATION (stagnates then declines at the end) -->
         <path d="M 390 400 C 540 402, 720 415, 850 430 C 970 450, 1070 510, 1100 525" fill="none" stroke="#c4554e" stroke-width="3" stroke-linecap="round"/>
-        <polygon points="1100,525 1086,535 1090,517" fill="#c4554e"/>
+        <polygon points="0,-9 16,0 0,9" fill="#c4554e" transform="translate(1100,525) rotate(27)"/>
 
         <!-- INFLECTION POINT marker -->
         <line x1="390" y1="400" x2="390" y2="540" stroke="#c9a961" stroke-width="1.4" stroke-dasharray="4 5" opacity=".7"/>
@@ -755,14 +755,14 @@ section{padding:4.5rem 0;position:relative;}
           <text x="14" y="37" font-family="Fraunces, serif" font-style="italic" font-size="11" fill="#5a6168">Private demand fails to anchor</text>
         </g>
 
-        <!-- Value-creation gap callout between Compounding and Fading -->
+        <!-- Value-creation gap callout — sits between the two curve endpoints -->
         <g>
-          <line x1="1212" y1="200" x2="1212" y2="500" stroke="#a8852e" stroke-width="1.6" stroke-dasharray="4 4"/>
-          <polygon points="1212,188 1207,200 1217,200" fill="#a8852e"/>
-          <polygon points="1212,512 1207,500 1217,500" fill="#a8852e"/>
-          <rect x="1132" y="330" width="160" height="46" rx="8" fill="#fff" stroke="#a8852e" stroke-width="1.5"/>
-          <text x="1212" y="350" text-anchor="middle" font-family="Fraunces, serif" font-size="14" font-weight="600" fill="#a8852e">≈ $XX Bn</text>
-          <text x="1212" y="367" text-anchor="middle" font-family="Inter, sans-serif" font-size="9.5" letter-spacing="1.2" font-weight="600" fill="#5a6168">ECONOMIC VALUE CREATION</text>
+          <line x1="1070" y1="220" x2="1070" y2="480" stroke="#a8852e" stroke-width="1.6" stroke-dasharray="4 4"/>
+          <polygon points="1070,208 1065,220 1075,220" fill="#a8852e"/>
+          <polygon points="1070,492 1065,480 1075,480" fill="#a8852e"/>
+          <rect x="880" y="318" width="195" height="58" rx="8" fill="#fff" stroke="#a8852e" stroke-width="1.5"/>
+          <text x="977" y="340" text-anchor="middle" font-family="Fraunces, serif" font-size="16" font-weight="600" fill="#a8852e">≈ $XX Bn</text>
+          <text x="977" y="360" text-anchor="middle" font-family="Inter, sans-serif" font-size="9.5" letter-spacing="1.4" font-weight="700" fill="#5a6168">VALUE AT STAKE</text>
         </g>
 
         <!-- X-axis baseline -->
