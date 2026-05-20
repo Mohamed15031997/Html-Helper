@@ -260,20 +260,44 @@ section{padding:4.5rem 0;position:relative;}
 .loop .eyebrow{background:rgba(201,169,97,.14);color:var(--gold-500);}
 .loop .title{color:#fff;}
 .loop .title em{font-style:italic;color:var(--gold-500);font-weight:400;}
-.loop-wrap{margin-top:2.5rem;display:flex;flex-direction:column;align-items:center;gap:1.75rem;}
-.loop-svg{width:100%;max-width:760px;height:auto;display:block;}
-.loop-svg .loop-path{fill:none;stroke-width:2.2;stroke-linecap:round;}
-.loop-svg .loop-path.eco{stroke:#6fd3a3;stroke-dasharray:1400;stroke-dashoffset:1400;animation:loopDraw 2.6s cubic-bezier(.55,.05,.25,1) forwards;}
-.loop-svg .loop-path.liv{stroke:var(--gold-500);stroke-dasharray:1400;stroke-dashoffset:1400;animation:loopDraw 2.6s cubic-bezier(.55,.05,.25,1) .35s forwards;}
-.loop-svg .loop-dot{r:7;}
-.loop-svg .loop-dot.eco{fill:#6fd3a3;}
-.loop-svg .loop-dot.liv{fill:var(--gold-500);}
-.loop-svg .loop-label{font-family:var(--font-display);font-size:26px;font-weight:500;letter-spacing:.02em;}
+.loop-wrap{margin-top:2.5rem;display:flex;flex-direction:column;align-items:center;gap:2rem;}
+.loop-svg{width:100%;max-width:920px;height:auto;display:block;filter:drop-shadow(0 18px 40px rgba(0,0,0,.35));}
+.loop-svg .loop-path{fill:none;stroke-width:4;stroke-linecap:round;}
+.loop-svg .loop-path.eco{stroke:url(#ecoGrad);stroke-dasharray:1600;stroke-dashoffset:1600;animation:loopDraw 2.6s cubic-bezier(.55,.05,.25,1) forwards;}
+.loop-svg .loop-path.liv{stroke:url(#livGrad);stroke-dasharray:1600;stroke-dashoffset:1600;animation:loopDraw 2.6s cubic-bezier(.55,.05,.25,1) .35s forwards;}
+.loop-svg .loop-halo{fill:none;stroke-width:14;stroke-linecap:round;opacity:.18;}
+.loop-svg .loop-halo.eco{stroke:#6fd3a3;}
+.loop-svg .loop-halo.liv{stroke:var(--gold-500);}
+.loop-svg .loop-dot{r:9;}
+.loop-svg .loop-dot.eco{fill:#6fd3a3;filter:drop-shadow(0 0 10px rgba(111,211,163,.7));}
+.loop-svg .loop-dot.liv{fill:var(--gold-500);filter:drop-shadow(0 0 10px rgba(212,183,106,.7));}
+.loop-svg .loop-dot-ring{fill:none;stroke-width:2;opacity:.55;animation:loopPulse 2.6s ease-in-out infinite;}
+.loop-svg .loop-dot-ring.eco{stroke:#6fd3a3;}
+.loop-svg .loop-dot-ring.liv{stroke:var(--gold-500);animation-delay:1.3s;}
+.loop-svg .loop-label{font-family:var(--font-display);font-size:30px;font-weight:600;letter-spacing:.01em;}
 .loop-svg .loop-label.eco{fill:#a8e5c5;}
 .loop-svg .loop-label.liv{fill:var(--gold-500);}
+.loop-svg .loop-sub{font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:.22em;fill:rgba(255,255,255,.55);text-transform:uppercase;}
+.loop-svg .loop-center{font-family:var(--font-display);font-style:italic;font-size:22px;fill:rgba(255,255,255,.55);}
+.loop-svg .loop-arrow.eco{fill:#6fd3a3;}
+.loop-svg .loop-arrow.liv{fill:var(--gold-500);}
 @keyframes loopDraw{to{stroke-dashoffset:0;}}
+@keyframes loopPulse{0%,100%{r:14;opacity:.5;}50%{r:22;opacity:0;}}
 .loop-caption{font-family:var(--font-display);font-style:italic;font-weight:300;font-size:clamp(1.25rem,2.2vw,1.6rem);color:rgba(255,255,255,.88);max-width:820px;text-align:center;line-height:1.55;}
 .loop-caption em{font-style:normal;color:var(--gold-500);font-weight:500;}
+.loop-pillars{margin-top:.5rem;display:grid;grid-template-columns:1fr auto 1fr;gap:1.5rem 2rem;max-width:920px;width:100%;align-items:start;}
+.loop-pillar{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:1.1rem 1.25rem;backdrop-filter:blur(6px);}
+.loop-pillar.eco{border-top:3px solid #6fd3a3;}
+.loop-pillar.liv{border-top:3px solid var(--gold-500);}
+.loop-pillar h4{margin:0 0 .55rem;font-family:var(--font-body);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;}
+.loop-pillar.eco h4{color:#a8e5c5;}
+.loop-pillar.liv h4{color:var(--gold-500);}
+.loop-pillar ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.4rem;}
+.loop-pillar li{font-family:var(--font-display);font-size:1rem;line-height:1.35;color:rgba(255,255,255,.82);display:flex;gap:.55rem;}
+.loop-pillar.eco li::before{content:'';width:6px;height:6px;margin-top:.55rem;border-radius:50%;background:#6fd3a3;flex-shrink:0;}
+.loop-pillar.liv li::before{content:'';width:6px;height:6px;margin-top:.55rem;border-radius:50%;background:var(--gold-500);flex-shrink:0;}
+.loop-bridge{display:flex;align-items:center;justify-content:center;align-self:center;font-family:var(--font-display);font-style:italic;font-size:1.6rem;color:rgba(255,255,255,.55);padding:0 .5rem;}
+@media (max-width:720px){.loop-pillars{grid-template-columns:1fr;}.loop-bridge{transform:rotate(90deg);padding:.25rem 0;}}
 
 /* =========================================================
    WHY BCG (world map credentials — map-centric)
@@ -959,15 +983,71 @@ section{padding:4.5rem 0;position:relative;}
     <span class="eyebrow reveal">The Cycle</span>
     <h2 class="title reveal">Economic activation and livability <em>must advance together</em></h2>
     <div class="loop-wrap reveal">
-      <svg class="loop-svg" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <!-- Infinity / lemniscate split into two arcs -->
-        <path class="loop-path eco" d="M 380 160 C 380 60, 200 60, 180 160 C 160 260, 340 260, 380 160" />
-        <path class="loop-path liv" d="M 380 160 C 380 260, 560 260, 580 160 C 600 60, 420 60, 380 160" />
-        <circle class="loop-dot eco" cx="180" cy="160" />
-        <circle class="loop-dot liv" cx="580" cy="160" />
-        <text class="loop-label eco" x="180" y="298" text-anchor="middle">Economic Activation</text>
-        <text class="loop-label liv" x="580" y="298" text-anchor="middle">Livability</text>
+      <svg class="loop-svg" viewBox="0 0 920 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="ecoGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#3fae7b"/>
+            <stop offset="100%" stop-color="#a8e5c5"/>
+          </linearGradient>
+          <linearGradient id="livGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#f2cf7a"/>
+            <stop offset="100%" stop-color="#b08858"/>
+          </linearGradient>
+          <marker id="ecoArrow" viewBox="0 0 10 10" refX="6" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#6fd3a3"/>
+          </marker>
+          <marker id="livArrow" viewBox="0 0 10 10" refX="6" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#d4b76a"/>
+          </marker>
+        </defs>
+
+        <!-- Soft halos under each loop -->
+        <path class="loop-halo eco" d="M 460 180 C 460 60, 220 60, 200 180 C 180 300, 420 300, 460 180" />
+        <path class="loop-halo liv" d="M 460 180 C 460 300, 700 300, 720 180 C 740 60, 500 60, 460 180" />
+
+        <!-- Two flowing arcs (lemniscate) with directional arrows mid-curve -->
+        <path class="loop-path eco" marker-mid="url(#ecoArrow)"
+              d="M 460 180 C 460 60, 220 60, 200 180 L 200 180 C 180 300, 420 300, 460 180" />
+        <path class="loop-path liv" marker-mid="url(#livArrow)"
+              d="M 460 180 C 460 300, 700 300, 720 180 L 720 180 C 740 60, 500 60, 460 180" />
+
+        <!-- Pulsing rings around lobe centers -->
+        <circle class="loop-dot-ring eco" cx="200" cy="180" r="14"/>
+        <circle class="loop-dot-ring liv" cx="720" cy="180" r="14"/>
+        <circle class="loop-dot eco" cx="200" cy="180" />
+        <circle class="loop-dot liv" cx="720" cy="180" />
+
+        <!-- Center crossing badge -->
+        <circle cx="460" cy="180" r="22" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.25)" stroke-width="1"/>
+        <text class="loop-center" x="460" y="188" text-anchor="middle">∞</text>
+
+        <!-- Labels -->
+        <text class="loop-sub eco" x="200" y="48" text-anchor="middle" fill="rgba(168,229,197,.7)">FRONT 1</text>
+        <text class="loop-label eco" x="200" y="332" text-anchor="middle">Economic Activation</text>
+        <text class="loop-sub liv" x="720" y="48" text-anchor="middle" fill="rgba(212,183,106,.7)">FRONT 2</text>
+        <text class="loop-label liv" x="720" y="332" text-anchor="middle">Livability</text>
       </svg>
+
+      <div class="loop-pillars">
+        <div class="loop-pillar eco">
+          <h4>Economic Activation</h4>
+          <ul>
+            <li>Anchor tenants &amp; private-sector demand</li>
+            <li>Investment momentum &amp; ecosystem build-out</li>
+            <li>Industry clusters and employment density</li>
+          </ul>
+        </div>
+        <div class="loop-bridge">⇌</div>
+        <div class="loop-pillar liv">
+          <h4>Livability</h4>
+          <ul>
+            <li>Residents, talent &amp; daily-life amenities</li>
+            <li>Culture, retail, F&amp;B &amp; public realm</li>
+            <li>Mobility, services &amp; quality of life</li>
+          </ul>
+        </div>
+      </div>
+
       <p class="loop-caption">Each <em>fuels</em> the other — jobs and investment draw residents; vibrant residents and amenities deepen the economy. Neither stands alone.</p>
     </div>
   </div>
