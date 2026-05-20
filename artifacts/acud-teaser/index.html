@@ -599,6 +599,12 @@ section{padding:4.5rem 0;position:relative;}
             <stop offset="0%" stop-color="#b08858"/>
             <stop offset="100%" stop-color="#c9a961"/>
           </linearGradient>
+          <marker id="ipArrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#2d6a4f"/>
+          </marker>
+          <marker id="ipArrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#c4554e"/>
+          </marker>
         </defs>
 
         <!-- Faint background grid -->
@@ -674,10 +680,10 @@ section{padding:4.5rem 0;position:relative;}
         <path d="M 90 525 C 190 520, 280 495, 390 400" fill="none" stroke="url(#ipFoundLine)" stroke-width="3.4" stroke-linecap="round"/>
 
         <!-- Path of COMPOUNDING (green) -->
-        <path d="M 390 400 C 570 365, 770 260, 1100 145" fill="none" stroke="#2d6a4f" stroke-width="3.2" stroke-linecap="round"/>
+        <path d="M 390 400 C 570 365, 770 260, 1100 145" fill="none" stroke="#2d6a4f" stroke-width="3.2" stroke-linecap="round" marker-end="url(#ipArrowGreen)"/>
 
         <!-- Path of STAGNATION (stagnates then declines at the end) -->
-        <path d="M 390 400 C 540 402, 720 415, 850 430 C 970 450, 1070 510, 1100 525" fill="none" stroke="#c4554e" stroke-width="3" stroke-linecap="round"/>
+        <path d="M 390 400 C 540 402, 720 415, 850 430 C 970 450, 1070 510, 1100 525" fill="none" stroke="#c4554e" stroke-width="3" stroke-linecap="round" marker-end="url(#ipArrowRed)"/>
 
         <!-- INFLECTION POINT marker -->
         <line x1="390" y1="400" x2="390" y2="540" stroke="#c9a961" stroke-width="1.4" stroke-dasharray="4 5" opacity=".7"/>
