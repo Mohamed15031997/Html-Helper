@@ -1212,12 +1212,15 @@ section{padding:4.5rem 0;position:relative;}
       { slot:'B3', iso:'id', city:'Jakarta',      country:'Indonesia',     lat:-6.21, lon:106.85, desc:'15-year economic and infrastructure masterplan to accelerate urban growth, connectivity, and investment attraction.' },
       // LEFT column (1)
       { slot:'L1', iso:'eg', city:'Ras El Hekma', country:'Egypt',         lat:31.05, lon:27.83,  desc:"Development & economic activation strategy for a major megaproject on Egypt's North Coast." },
+      // Extra top slot (Egypt)
+      { slot:'T3', iso:'eg', city:'Noor Smart City', country:'Egypt',      lat:30.05, lon:31.74,  desc:"Defined the smart-city vision, value proposition, priority user personas, use cases and implementation roadmap for one of Egypt's largest planned smart cities." },
     ];
 
     // Slot positions in viewBox coords (box top-left). Box width ~220, height ~110.
     // Boxes overlap the map edges; sides: T=top, R=right, B=bottom, L=left.
     const SLOTS = {
       T1:{x:30,  y:0,   side:'T'}, T2:{x:560, y:0,   side:'T'},
+      T3:{x:300, y:0,   side:'T'},
       R1:{x:780, y:200, side:'R'},
       B1:{x:30,  y:370, side:'B'}, B2:{x:390, y:370, side:'B'}, B3:{x:750, y:370, side:'B'},
       L1:{x:0,   y:200, side:'L'},
