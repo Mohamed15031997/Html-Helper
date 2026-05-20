@@ -262,10 +262,10 @@ section{padding:4.5rem 0;position:relative;}
 .loop .title em{font-style:italic;color:var(--gold-500);font-weight:400;}
 .loop-wrap{margin-top:2.5rem;display:flex;flex-direction:column;align-items:center;gap:2rem;}
 .loop-svg{width:100%;max-width:920px;height:auto;display:block;filter:drop-shadow(0 18px 40px rgba(0,0,0,.35));}
-.loop-svg .loop-path{fill:none;stroke-width:4;stroke-linecap:round;}
-.loop-svg .loop-path.eco{stroke:url(#ecoGrad);stroke-dasharray:1600;stroke-dashoffset:1600;animation:loopDraw 2.6s cubic-bezier(.55,.05,.25,1) forwards;}
-.loop-svg .loop-path.liv{stroke:url(#livGrad);stroke-dasharray:1600;stroke-dashoffset:1600;animation:loopDraw 2.6s cubic-bezier(.55,.05,.25,1) .35s forwards;}
-.loop-svg .loop-halo{fill:none;stroke-width:14;stroke-linecap:round;opacity:.18;}
+.loop-svg .loop-path{fill:none;stroke-width:4.5;stroke-linecap:round;mix-blend-mode:screen;}
+.loop-svg .loop-path.eco{stroke:url(#ecoGrad);stroke-dasharray:1800;stroke-dashoffset:1800;animation:loopDraw 2.8s cubic-bezier(.55,.05,.25,1) forwards;}
+.loop-svg .loop-path.liv{stroke:url(#livGrad);stroke-dasharray:1800;stroke-dashoffset:1800;animation:loopDraw 2.8s cubic-bezier(.55,.05,.25,1) .35s forwards;}
+.loop-svg .loop-halo{fill:none;stroke-width:18;stroke-linecap:round;opacity:.16;mix-blend-mode:screen;}
 .loop-svg .loop-halo.eco{stroke:#6fd3a3;}
 .loop-svg .loop-halo.liv{stroke:var(--gold-500);}
 .loop-svg .loop-dot{r:9;}
@@ -986,12 +986,14 @@ section{padding:4.5rem 0;position:relative;}
       <svg class="loop-svg" viewBox="0 0 920 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <defs>
           <linearGradient id="ecoGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#3fae7b"/>
-            <stop offset="100%" stop-color="#a8e5c5"/>
+            <stop offset="0%" stop-color="#a8e5c5"/>
+            <stop offset="55%" stop-color="#3fae7b"/>
+            <stop offset="100%" stop-color="#d4b76a"/>
           </linearGradient>
           <linearGradient id="livGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#f2cf7a"/>
-            <stop offset="100%" stop-color="#b08858"/>
+            <stop offset="0%" stop-color="#3fae7b"/>
+            <stop offset="45%" stop-color="#d4b76a"/>
+            <stop offset="100%" stop-color="#f2cf7a"/>
           </linearGradient>
           <marker id="ecoArrow" viewBox="0 0 10 10" refX="6" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto">
             <path d="M 0 0 L 10 5 L 0 10 z" fill="#6fd3a3"/>
@@ -1001,17 +1003,17 @@ section{padding:4.5rem 0;position:relative;}
           </marker>
         </defs>
 
-        <!-- Soft halos under each loop -->
-        <path class="loop-halo eco" d="M 460 180 C 460 40, 200 40, 200 180 C 200 320, 460 320, 460 180 Z" />
-        <path class="loop-halo liv" d="M 460 180 C 460 40, 720 40, 720 180 C 720 320, 460 320, 460 180 Z" />
+        <!-- Soft halos under each lobe (crossing infinity) -->
+        <path class="loop-halo eco" d="M 480 165 C 460 40, 220 40, 220 180 C 220 320, 460 320, 440 195" />
+        <path class="loop-halo liv" d="M 440 165 C 460 40, 700 40, 700 180 C 700 320, 460 320, 480 195" />
 
-        <!-- Two smooth ellipses forming a clean lemniscate -->
-        <path class="loop-path eco" d="M 460 180 C 460 40, 200 40, 200 180 C 200 320, 460 320, 460 180 Z" />
-        <path class="loop-path liv" d="M 460 180 C 460 40, 720 40, 720 180 C 720 320, 460 320, 460 180 Z" />
+        <!-- True infinity: two crossing arcs blending at the center -->
+        <path class="loop-path eco" d="M 480 165 C 460 40, 220 40, 220 180 C 220 320, 460 320, 440 195" />
+        <path class="loop-path liv" d="M 440 165 C 460 40, 700 40, 700 180 C 700 320, 460 320, 480 195" />
 
         <!-- Labels -->
-        <text class="loop-label eco" x="200" y="332" text-anchor="middle">Economic Activation</text>
-        <text class="loop-label liv" x="720" y="332" text-anchor="middle">Livability</text>
+        <text class="loop-label eco" x="220" y="350" text-anchor="middle">Economic Activation</text>
+        <text class="loop-label liv" x="700" y="350" text-anchor="middle">Livability</text>
       </svg>
 
       <p class="loop-caption">Each <em>fuels</em> the other — jobs and investment draw residents; vibrant residents and amenities deepen the economy. Neither stands alone.</p>
