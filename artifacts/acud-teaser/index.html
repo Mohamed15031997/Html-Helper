@@ -1002,24 +1002,12 @@ section{padding:4.5rem 0;position:relative;}
         </defs>
 
         <!-- Soft halos under each loop -->
-        <path class="loop-halo eco" d="M 460 180 C 460 60, 220 60, 200 180 C 180 300, 420 300, 460 180" />
-        <path class="loop-halo liv" d="M 460 180 C 460 300, 700 300, 720 180 C 740 60, 500 60, 460 180" />
+        <path class="loop-halo eco" d="M 460 180 C 460 40, 200 40, 200 180 C 200 320, 460 320, 460 180 Z" />
+        <path class="loop-halo liv" d="M 460 180 C 460 40, 720 40, 720 180 C 720 320, 460 320, 460 180 Z" />
 
-        <!-- Two flowing arcs (lemniscate) with directional arrows mid-curve -->
-        <path class="loop-path eco" marker-mid="url(#ecoArrow)"
-              d="M 460 180 C 460 60, 220 60, 200 180 L 200 180 C 180 300, 420 300, 460 180" />
-        <path class="loop-path liv" marker-mid="url(#livArrow)"
-              d="M 460 180 C 460 300, 700 300, 720 180 L 720 180 C 740 60, 500 60, 460 180" />
-
-        <!-- Pulsing rings around lobe centers -->
-        <circle class="loop-dot-ring eco" cx="200" cy="180" r="14"/>
-        <circle class="loop-dot-ring liv" cx="720" cy="180" r="14"/>
-        <circle class="loop-dot eco" cx="200" cy="180" />
-        <circle class="loop-dot liv" cx="720" cy="180" />
-
-        <!-- Center crossing badge -->
-        <circle cx="460" cy="180" r="22" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.25)" stroke-width="1"/>
-        <text class="loop-center" x="460" y="188" text-anchor="middle">∞</text>
+        <!-- Two smooth ellipses forming a clean lemniscate -->
+        <path class="loop-path eco" d="M 460 180 C 460 40, 200 40, 200 180 C 200 320, 460 320, 460 180 Z" />
+        <path class="loop-path liv" d="M 460 180 C 460 40, 720 40, 720 180 C 720 320, 460 320, 460 180 Z" />
 
         <!-- Labels -->
         <text class="loop-label eco" x="200" y="332" text-anchor="middle">Economic Activation</text>
