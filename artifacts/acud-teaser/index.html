@@ -412,18 +412,18 @@ section{padding:4.5rem 0;position:relative;}
 .wm2-note{margin-top:.5rem;text-align:center;font-family:var(--font-body);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:#9aa3aa;}
 .wm2-wrap{position:relative;}
 .wm2-callouts{position:absolute;inset:0;pointer-events:none;}
-.wm2-call{position:absolute;pointer-events:auto;background:rgba(255,255,255,.96);backdrop-filter:blur(2px);border:1px solid var(--grey-200);border-left:3px solid var(--green-700);border-radius:6px;padding:.4rem .55rem;width:16%;min-height:60px;box-shadow:0 4px 12px rgba(13,77,58,.14);}
+.wm2-call{position:absolute;pointer-events:auto;background:rgba(255,255,255,.96);backdrop-filter:blur(2px);border:1px solid var(--grey-200);border-left:3px solid var(--green-700);border-radius:8px;padding:.7rem .85rem;width:22%;min-height:90px;box-shadow:0 6px 18px rgba(13,77,58,.16);}
 .wm2-call.side-L{}
-.wm2-call .ttl{display:flex;align-items:center;gap:.35rem;font-family:var(--font-body);font-size:.72rem;font-weight:700;color:var(--green-900);margin-bottom:.25rem;line-height:1.15;letter-spacing:.01em;}
-.wm2-call .flag{width:18px;height:auto;display:inline-block;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.08);object-fit:cover;}
-.wm2-call p{font-family:var(--font-body);font-size:.62rem;line-height:1.4;color:var(--grey-700);margin:0;}
+.wm2-call .ttl{display:flex;align-items:center;gap:.5rem;font-family:var(--font-body);font-size:1rem;font-weight:700;color:var(--green-900);margin-bottom:.4rem;line-height:1.2;letter-spacing:.01em;}
+.wm2-call .flag{width:26px;height:auto;display:inline-block;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.08);object-fit:cover;}
+.wm2-call p{font-family:var(--font-body);font-size:.82rem;line-height:1.45;color:var(--grey-700);margin:0;}
 .wm2-leader{fill:none;stroke:#c9a961;stroke-width:1;stroke-dasharray:3 3;opacity:.75;}
 .wm2-anchor{fill:#c9a961;}
 @media(max-width:900px){
-  .wm2-call{width:18%;padding:.3rem .45rem;min-height:54px;}
-  .wm2-call .ttl{font-size:.58rem;gap:.25rem;}
-  .wm2-call .flag{font-size:.9rem;}
-  .wm2-call p{font-size:.52rem;line-height:1.3;}
+  .wm2-call{width:26%;padding:.45rem .55rem;min-height:72px;}
+  .wm2-call .ttl{font-size:.78rem;gap:.35rem;}
+  .wm2-call .flag{width:20px;}
+  .wm2-call p{font-size:.66rem;line-height:1.35;}
 }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
@@ -1129,29 +1129,26 @@ section{padding:4.5rem 0;position:relative;}
     // 10 projects arranged in left/right margin slots with connector lines to country.
     // Slots are in viewBox coords; map renders in 0..1000 x 0..500.
     const projects = [
-      // TOP row
+      // TOP row (2)
       { slot:'T1', iso:'us', city:'Detroit',      country:'United States', lat:42.33, lon:-83.05, desc:'Business attraction and job growth strategy for an economic development organization.' },
-      { slot:'T2', iso:'ua', city:'Kyiv',         country:'Ukraine',       lat:50.45, lon:30.52,  desc:"Defined the City of Kyiv's 2025 strategy." },
-      { slot:'T3', iso:'cn', city:'Beijing',      country:'China',         lat:39.90, lon:116.41, desc:'Land development strategy and industrial planning for municipal government.' },
-      // RIGHT column
-      { slot:'R1', iso:'jp', city:'Tokyo',        country:'Japan',         lat:35.68, lon:139.69, desc:'Smart-city strategy.' },
-      { slot:'R2', iso:'in', city:'New Delhi',    country:'India',         lat:28.61, lon:77.21,  desc:'Commercial business district development, including AeroCity.' },
-      // BOTTOM row
+      { slot:'T2', iso:'cn', city:'Beijing',      country:'China',         lat:39.90, lon:116.41, desc:'Land development strategy and industrial planning for municipal government.' },
+      // RIGHT column (1)
+      { slot:'R1', iso:'in', city:'New Delhi',    country:'India',         lat:28.61, lon:77.21,  desc:'Commercial business district development, including AeroCity.' },
+      // BOTTOM row (3)
       { slot:'B1', iso:'sa', city:'NEOM',         country:'Saudi Arabia',  lat:27.97, lon:35.56,  desc:'Designed a 100% renewable-powered new industrial city.' },
       { slot:'B2', iso:'sa', city:'Riyadh',       country:'Saudi Arabia',  lat:24.71, lon:46.67,  desc:'$500Bn greenfield city of the future strategy, IOT smart cities plan and strategy for development of mixed-use mega-project.' },
       { slot:'B3', iso:'id', city:'Jakarta',      country:'Indonesia',     lat:-6.21, lon:106.85, desc:'15-year economic and infrastructure masterplan.' },
-      // LEFT column
-      { slot:'L1', iso:'ma', city:'Casablanca',   country:'Morocco',       lat:33.57, lon:-7.59,  desc:'"True Capital" of Africa initiatives and new industrial city strategy.' },
-      { slot:'L2', iso:'eg', city:'Ras El Hekma', country:'Egypt',         lat:31.05, lon:27.83,  desc:'Development & economic activation strategy for a major coastal destination.' },
+      // LEFT column (1)
+      { slot:'L1', iso:'eg', city:'Ras El Hekma', country:'Egypt',         lat:31.05, lon:27.83,  desc:'Development & economic activation strategy for a major coastal destination.' },
     ];
 
-    // Slot positions in viewBox coords (box top-left). Box width ~160, height ~95.
+    // Slot positions in viewBox coords (box top-left). Box width ~220, height ~110.
     // Boxes overlap the map edges; sides: T=top, R=right, B=bottom, L=left.
     const SLOTS = {
-      T1:{x:15,  y:5,   side:'T'}, T2:{x:315, y:5,   side:'T'}, T3:{x:615, y:5,   side:'T'},
-      R1:{x:830, y:140, side:'R'}, R2:{x:830, y:250, side:'R'},
-      B1:{x:275, y:412, side:'B'}, B2:{x:470, y:412, side:'B'}, B3:{x:685, y:412, side:'B'},
-      L1:{x:15,  y:140, side:'L'}, L2:{x:15,  y:250, side:'L'},
+      T1:{x:30,  y:0,   side:'T'}, T2:{x:560, y:0,   side:'T'},
+      R1:{x:780, y:200, side:'R'},
+      B1:{x:30,  y:400, side:'B'}, B2:{x:390, y:400, side:'B'}, B3:{x:750, y:400, side:'B'},
+      L1:{x:0,   y:200, side:'L'},
     };
 
     async function initWorldMap(){
@@ -1183,7 +1180,7 @@ section{padding:4.5rem 0;position:relative;}
         projects.forEach(p => {
           const xy = projection([p.lon, p.lat]); if(!xy) return;
           const slot = SLOTS[p.slot]; if(!slot) return;
-          const boxW = 160, boxH = 88;
+          const boxW = 220, boxH = 110;
           let anchorX, anchorY;
           if (slot.side === 'L')      { anchorX = slot.x + boxW;   anchorY = slot.y + boxH/2; }
           else if (slot.side === 'R') { anchorX = slot.x;          anchorY = slot.y + boxH/2; }
